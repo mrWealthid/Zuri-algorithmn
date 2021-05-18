@@ -1,5 +1,3 @@
-//Question 1 Solution
-
 const convertFahrToCelsius = (C) => {
   if (Number.isNaN(parseInt(C)) && typeof C !== "object") {
     return `${C} is not a valid number but a/an ${typeof C}`;
@@ -9,12 +7,10 @@ const convertFahrToCelsius = (C) => {
       .slice(8, 13)
       .toLowerCase()}`;
   } else if (!Array.isArray(C) && typeof C === "object") {
-    return `{${Object.keys(C)}: ${Object.values(
-      C
-    )}} is not a valid number but a/an ${typeof C}`;
+    return `${JSON.stringify(C)} is not a valid number but a/an ${typeof C}`;
   } else {
     let result = (C - 32) / 1.8;
-    return result.toFixed(4);
+    return parseFloat(result.toFixed(4));
   }
 };
 
@@ -28,7 +24,7 @@ const checkYuGiOh = (n) => {
   } else if (Array.isArray(n)) {
     return `Invalid parameter: [${n}]`;
   } else if (!Array.isArray(n) && typeof n === "object") {
-    return `Invalid parameter: {${Object.keys(n)}: ${Object.values(n)}}`;
+    return `Invalid parameter: ${JSON.stringify(n)} `;
   }
 
   for (let i = 1; i <= n; i++) {
